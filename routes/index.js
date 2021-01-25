@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+const Articles = require('../models/articles')
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index');
@@ -22,8 +24,9 @@ router.get('/users-page', function(req, res, next) {
 });
 
 /* GET Catalog page. */
-router.get('/catalog-page', function(req, res, next) {
-  res.render('catalog');
+router.get('/catalog-page', async function(req, res, next) {
+  let articlesList = await Articles.find()
+  res.render('catalog', { articlesList });
 });
 
 /* GET Orders-list page. */
