@@ -397,3 +397,8 @@ body.sidebar-toggled footer.sticky-footer {
   color:#d6d8db;
   text-align: center;
 }
+
+.status-warning {
+  color: #ffc107;
+  text-align: center;
+}

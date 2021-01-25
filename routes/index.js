@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const Articles = require('../models/articles')
+const Orders = require('../models/orders')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -30,8 +31,9 @@ router.get('/catalog-page', async function(req, res, next) {
 });
 
 /* GET Orders-list page. */
-router.get('/orders-list-page', function(req, res, next) {
-  res.render('orders-list');
+router.get('/orders-list-page', async function(req, res, next) {
+  let ordersList = await Orders.find()
+  res.render('orders-list', {ordersList});
 });
 
 /* GET Order detail page. */
