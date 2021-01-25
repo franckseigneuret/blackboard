@@ -37,8 +37,14 @@ router.get('/orders-list-page', async function(req, res, next) {
 });
 
 /* GET Order detail page. */
-router.get('/order-page', function(req, res, next) {
-  res.render('order');
+router.get('/order-page', async function(req, res, next) {
+  // const order = await Orders.findById(req.query.id)
+  // console.log('order == ', order)
+
+  
+  const currentOrder = await Orders.findById(req.query.id).populate('articles').exec();
+  console.log('currentOrder == ', currentOrder)
+  res.render('order', { currentOrder });
 });
 
 /* GET chart page. */

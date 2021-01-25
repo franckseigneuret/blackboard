@@ -126,17 +126,57 @@
                   </thead>
 
                   <tbody>
+                    <% 
+                      let statusPaymentClass = ''
+                      let showDatePayment = false
+                      let statusShipment = 'status-secondary';
+                      if(currentOrder.status_shipment === true) {
+                        statusShipment = 'status-success';
+                      }
+
+                      switch (currentOrder.status_payment) {
+                        case 'waiting':
+                          statusPaymentClass = 'status-warning'
+                          break;
+                        case 'refused':
+                          statusPaymentClass = 'status-danger'
+                          break;
+                        case 'validated':
+                          statusPaymentClass = 'status-success'
+                          showDatePayment = true
+                          break;
+                      
+                        default:
+                          break;
+                      }
+                    %> 
                     <tr>
-                      <td>Mon Oct 01 2018 02:00:00 GMT+0200 (GMT+02:00)</td>
-                      <td>869€</td>
-                      <td>23€</td>
-                      <td class="status-secondary"><i class="fas fa-circle"></i></td>
-                      <td>-</td>
-                      <td class="status-secondary"><i class="fas fa-circle"></i></td>
-                      <td>-</td>
-                      <td>22 Rue des Martyrs</td>
-                      <td>Paris</td>
-                      <td>75009</td>
+                      <td><%=currentOrder.date_insert%></td>
+                      <td><%=currentOrder.total%>€</td>
+                      <td><%=currentOrder.shipping_cost%>€</td>
+                      <td class="<%=statusPaymentClass%>">
+                        <% if(statusPaymentClass !== '') { %>
+                          <i class="fas fa-circle"></i>
+                        <% } else { %>
+                          <%=currentOrder.status_payment%>
+                        <% } %>
+                      </td>
+                      <td>
+                        <% if(showDatePayment) { %>
+                          <%=currentOrder.date_payment%>
+                        <% } else {%>
+                          -
+                        <% } %>
+                      </td>
+                      <td class="<%=statusShipment%>"><i class="fas fa-circle"></i></td>
+                      <td>
+                        <% if(currentOrder.status_shipment) { %>
+                          <%=currentOrder.date_shipment%>
+                        <% } %>
+                      </td>
+                      <td><%=currentOrder.delivery_address%></td>
+                      <td><%=currentOrder.delivery_city%></td>
+                      <td><%=currentOrder.delivery_zipcode%></td>
 
                     </tr>
 

@@ -163,7 +163,7 @@
                           default:
                             break;
                         }
-                      %> 
+                      %>
                       <tr>
                         <td><%=ordersList[i].date_insert%></td>
                         <td><%=ordersList[i].total%></td>
@@ -185,8 +185,9 @@
                         <td class="<%=statusShipment%>"><i class="fas fa-circle"></i></td>
                         <td>
                           <% if(ordersList[i].status_shipment) { %>
-                            <%=ordersList[i].date_shipment%></td>
+                            <%=ordersList[i].date_shipment%>
                           <% } %>
+                        </td>
                         <td><%=ordersList[i].delivery_address%></td>
                         <td><%=ordersList[i].delivery_city%></td>
                         <td><%=ordersList[i].delivery_zipcode%></td>
