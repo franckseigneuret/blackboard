@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var ordersSchema = mongoose.Schema({
+  articles: [{type:mongoose.Schema.Types.ObjectId, ref: 'articles'}],
   total: Number,
   shipping_cost: Number,
   date_insert: Date,
