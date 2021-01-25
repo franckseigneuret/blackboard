@@ -205,20 +205,17 @@
                     </tr>
                   </tfoot>
                   <tbody>
+                    <% 
+                      let articles = currentOrder.articles
+                      for (let i=0; i<articles.length; i++) {%>
                     <tr>
-                      <td>Ninebot by Segway Kickscooter ES2</td>
-                      <td>Urbain - Route (8'), Autonomie Jusqu'à 25 km, Vitesse max. 25 km/h</td>
-                      <td>12,5kg</td>
-                      <td>499€</td>
-                      <td><img src="/images/ninebot-segway-kickscooter.jpg"></td>
+                      <td><%= articles[i].title %></td>
+                      <td><%= articles[i].description %></td>
+                      <td><%= articles[i].weight %>kg</td>
+                      <td><%= articles[i].price %>€</td>
+                      <td><img src="/images/<%= articles[i].img %>"></td>
                     </tr>
-                    <tr>
-                      <td>Xiaomi M365</td>
-                      <td>Autonomie Jusqu'à 25 km, Vitesse max. 25 km/h</td>
-                      <td>12,5kg</td>
-                      <td>370€</td>
-                      <td><img src="/images/xiaomi M365-gris.jpg"></td>
-                    </tr>
+                    <% } %>
 
                   </tbody>
                 </table>
